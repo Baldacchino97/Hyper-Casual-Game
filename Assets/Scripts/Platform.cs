@@ -6,7 +6,7 @@ public class Platform : MonoBehaviour
 {
 
     float velocity = 1;
-    float distance = 3;
+    float distance = 2;
     float angle = 0;
 
     // Start is called before the first frame update
