@@ -9,8 +9,8 @@ public class PlatformManager : MonoBehaviour
     int platformIndex = 0;
     int distanceToNextPlatform = 4;
 
-    float platformWidth = 3;
-    float platformHeight = 0.5f;
+    float platformWidth = 2;
+    float platformHeight = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +32,22 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    void MakePlatform()
+    public void MakePlatform()
     {
         Vector2 position = new Vector2(0,platformIndex * distanceToNextPlatform);
+
         GameObject newPlatformObj = Instantiate(platformPrefab, position, Quaternion.identity);
+
         newPlatformObj.transform.SetParent(transform);
         newPlatformObj.transform.localScale = new Vector2(platformWidth, platformHeight);
 
+        SetSpeed(newPlatformObj);
+
         platformIndex ++;
+    }
+
+    void SetSpeed(GameObject newPlatformObj)
+    {
+        newPlatformObj.GetComponent<Platform>().velocity = Random.Range(-2,3);
     }
 }

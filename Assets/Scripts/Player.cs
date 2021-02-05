@@ -97,13 +97,13 @@ public class Player : MonoBehaviour
     {
         if (rb.position.x < - 2.5f)
         {
-            rb.position = new Vector2(-2.8f, rb.position.y);
+            rb.position = new Vector2(-2.5f, rb.position.y);
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
         }
 
-        if (rb.position.x > 2.8f)
+        if (rb.position.x > 2.5f)
         {
-            rb.position = new Vector2(2.8f, rb.position.y);
+            rb.position = new Vector2(2.5f, rb.position.y);
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
         }
     }
@@ -119,7 +119,14 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) 
     {
+        rb.velocity = Vector2.zero;
         CurrentState = PlayerState.Standing;
         transform.SetParent(other.gameObject.transform);
+    }
+
+    void OnCollisionExit2D(Collision2D other) 
+    {
+        GameObject.Find("Platform").GetComponent<PlatformManager>().MakePlatform();
+        Destroy(other.gameObject, 0.1f);
     }
 }

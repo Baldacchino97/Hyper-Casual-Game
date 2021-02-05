@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
 
-    float velocity = 1;
+    public float velocity = 1;
     float distance = 2;
     float angle = 0;
 

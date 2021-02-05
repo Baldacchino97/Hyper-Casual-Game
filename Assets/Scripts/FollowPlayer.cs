@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
     public  GameObject PlayerObj;
     float smooth = 0.3f;
     Vector2 velocity = Vector2.zero;
-    int yOffset = 3;
+    int yOffset = 2;
 
     // Update is called once per frame
     void Update()
