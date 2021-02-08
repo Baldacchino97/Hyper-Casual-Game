@@ -42,6 +42,7 @@ public class PlatformManager : MonoBehaviour
         newPlatformObj.transform.localScale = new Vector2(platformWidth, platformHeight);
 
         SetSpeed(newPlatformObj);
+        DecreasePlatformWidth();
 
         platformIndex ++;
     }
@@ -49,5 +50,13 @@ public class PlatformManager : MonoBehaviour
     void SetSpeed(GameObject newPlatformObj)
     {
         newPlatformObj.GetComponent<Platform>().velocity = Random.Range(-2,3);
+    }
+
+    void DecreasePlatformWidth()
+    {
+        if (platformWidth > 0.7f)
+        {
+            platformWidth -= 0.03f;
+        }
     }
 }

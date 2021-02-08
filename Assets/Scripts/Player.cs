@@ -121,7 +121,11 @@ public class Player : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         CurrentState = PlayerState.Standing;
+
         transform.SetParent(other.gameObject.transform);
+        StartCoroutine(other.gameObject.GetComponent<Platform>().LandingEffect());
+
+        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddScore();
     }
 
     void OnCollisionExit2D(Collision2D other) 
