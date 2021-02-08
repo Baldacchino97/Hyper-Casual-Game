@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         transform.SetParent(other.gameObject.transform);
         StartCoroutine(other.gameObject.GetComponent<Platform>().LandingEffect());
 
-        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddScore();
+        //GameObject.Find("GameManager").GetComponent<ScoreManager>().AddScore();
     }
 
     void OnCollisionExit2D(Collision2D other) 
