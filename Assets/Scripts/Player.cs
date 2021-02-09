@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     float previousPosXofParent;
 
     bool isDead = false;
+
+    public GameObject shootEffectPrefab;
     
     void Awake()
     {
@@ -79,12 +81,17 @@ public class Player : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        Destroy(Instantiate(shootEffectPrefab, transform.position, Quaternion.identity), 1.0f);
+
+
         CurrentState = PlayerState.Falling;
         
         rb.isKinematic = true;
         rb.velocity = new Vector2(0,0);
 
         yield return new WaitForSeconds(0.5f);
+
+        //ChangeBackgroundColor();
 
         bc2D.enabled = true;
         rb.isKinematic = false;
@@ -125,7 +132,7 @@ public class Player : MonoBehaviour
         transform.SetParent(other.gameObject.transform);
         StartCoroutine(other.gameObject.GetComponent<Platform>().LandingEffect());
 
-        //GameObject.Find("GameManager").GetComponent<ScoreManager>().AddScore();
+        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddScore();
     }
 
     void OnCollisionExit2D(Collision2D other) 

@@ -49,7 +49,7 @@ public class PlatformManager : MonoBehaviour
 
     void SetSpeed(GameObject newPlatformObj)
     {
-        newPlatformObj.GetComponent<Platform>().velocity = Random.Range(-2,3);
+        newPlatformObj.GetComponent<Platform>().velocity = Random.Range(-3,4);
     }
 
     void DecreasePlatformWidth()
